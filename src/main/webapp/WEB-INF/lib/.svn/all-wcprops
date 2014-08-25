@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/15/trunk/root/WEB-INF/lib
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/root/WEB-INF/lib/servlet-api.jar
+END
+commons-lang3-3.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/15/trunk/root/WEB-INF/lib/commons-lang3-3.1.jar
+END
+hsqldb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/3/trunk/root/WEB-INF/lib/hsqldb.jar
+END
