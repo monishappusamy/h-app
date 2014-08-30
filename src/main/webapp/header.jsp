@@ -2,110 +2,130 @@
 <%@ page import="java.servlet.*" %>
 <%@ page import="java.servlet.http.*" %>
 <%@ page import="java.sql.*" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>The BodgeIt Store</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="./js/util.js"></script>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="../../favicon.ico">
+	<title>Hackathon</title>
+	<script type="text/javascript" src="./js/util.js"></script>
+	
+	<!-- Bootstrap core CSS -->
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Custom styles for this template -->
+    <link href="./bootstrap/starter-template.css" rel="stylesheet">
+
 </head>
 <body>
 <%
 	String username = (String) session.getAttribute("username");
 	String usertype = (String) session.getAttribute("usertype");
 %>
-<center>
-<table width="80%" class="border">
-<tr BGCOLOR=#C3D9FF>
-<td align="center" colspan="6">
-<H1>The BodgeIt Store</H1>
-<table width="100%" class=\"noborder\">
-<tr BGCOLOR=#C3D9FF>
-<td align="center" width="30%">&nbsp;</td>
-<td align="center" width="40%">We bodge it, so you dont have to!</td>
-<td align="center" width="30%" style="text-align: right" >
-<%
-	if (username != null) {
-		out.println("User: <a href=\"password.jsp\">" + username + "</a>");
-	} else {
-		out.println("Guest user");
-	}
-%>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="home.jsp">Home</a></td>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="about.jsp">About Us</a></td>
-<%
-	if (usertype != null && usertype.equals("ADMIN")) {
-%>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="contact.jsp">Comments</a></td>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="admin.jsp">Admin</a></td>
-<%
-	} else {
-%>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="contact.jsp">Contact Us</a></td>
-<!-- td align="center" width="16%"><a href="admin.jsp">Admin</a></td-->
-<%
-	}
-%>
-<td align="center" width="16%" BGCOLOR=#EEEEEE>
-<%
-	if (usertype == null) {
-%>
-		<a href="login.jsp">Login</a>
-<%
-	} else {
-%>
-		<a href="logout.jsp">Logout</a>
-<%
-	}
-%>
-</td>
-<%
-	if (usertype == null || ! usertype.equals("ADMIN")) {
-%>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="basket.jsp">Your Basket</a></td>
-<%
-	}
-%>
-<td align="center" width="16%" BGCOLOR=#EEEEEE><a href="search.jsp">Search</a></td>
-</tr>
-<tr>
-<td align="center" colspan="6">
-<table width="100%" class="border">
-<tr>
-<td align="left" valign="top" width="25%">
-<%
-	Connection c = null;
-	PreparedStatement stmt = null;
-	ResultSet rs = null;
-	try {
-		// Get hold of the JDBC driver
-		Class.forName("org.hsqldb.jdbcDriver" );
-		// Establish a connection to an in memory db
-		c = DriverManager.getConnection("jdbc:hsqldb:mem:SQL", "sa", "");
-		stmt = c.prepareStatement("SELECT * FROM ProductTypes ORDER BY type");
-		rs = stmt.executeQuery();
-		while (rs.next()) {
-			String type = rs.getString("type");
-			out.println("<a href=\"product.jsp?typeid=" + rs.getInt("typeid") + "\">" + type + "</a><br/>");
-		}
-	} catch (SQLException e) {
-		if ("true".equals(request.getParameter("debug"))) {
-			c.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
-			out.println("DEBUG System error: " + e + "<br/><br/>");
-		} else {
-			out.println("System error.");
-		}
-	} finally {
-		stmt.close();
-		rs.close();
-		c.close();
-	}
-%>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-</td>
-<td valign="top" width="70%">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">Wipro Store</a>
+			</div>
+			<div class="collapse navbar-collapse">
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="home.jsp">Home</a></li>
+				<li><a href="about.jsp">About</a></li>
+				<%
+					if (usertype != null && usertype.equals("ADMIN")) {
+				%>
+				<li><a href="contact.jsp">Comments</a></li>
+				<li><a href="admin.jsp">Admin</a></li>
+				<%
+					} else {
+				%>
+				<li><a href="contact.jsp">Contact us</a></li>
+				<%
+					}
+				%>
+				<%
+					if (usertype == null) {
+				%>
+						<li><a href="login.jsp">Login</a></li>
+				<%
+					} else {
+				%>
+						<li><a href="logout.jsp">Logout</a></li>
+				<%
+					}
+				%>
+				
+				
+				<%
+					if (usertype == null || ! usertype.equals("ADMIN")) {
+				%>
+						<li><a href="basket.jsp">Your Basket</a></li>
+				<%
+					}
+				%>
+						<li><a href="search.jsp">Search</a></li>
+
+				
+			  </ul>
+			  
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#GuestUser">
+						<%
+							if (username != null) {
+								out.println("</a></li><li><a href=\"password.jsp\">"+ username +"</a></li>");
+							} else {
+								out.println("Guest user");
+							}
+						%>
+	
+				</a></li>
+			  </ul>
+			</div><!--/.nav-collapse -->
+		</div>
+    </div>
+
+	<div class="container">
+	<div class="row row-offcanvas row-offcanvas-right">
+	<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+			<%
+			Connection c1 = null;
+			PreparedStatement stmt1 = null;
+			ResultSet rs1 = null;
+			try {
+				// Get hold of the JDBC driver
+				Class.forName("org.hsqldb.jdbcDriver" );
+				// Establish a connection to an in memory db
+				c1 = DriverManager.getConnection("jdbc:hsqldb:mem:SQL", "sa", "");
+				stmt1 = c1.prepareStatement("SELECT * FROM ProductTypes ORDER BY type");
+				rs1 = stmt1.executeQuery();
+				while (rs1.next()) {
+					String type = rs1.getString("type");
+					out.println("<a class=\"list-group-item\" href=\"product.jsp?typeid=" + rs1.getInt("typeid") + "\" >" + type + "</a>");
+				}
+			} catch (SQLException e) {
+				if ("true".equals(request.getParameter("debug"))) {
+					c1.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
+					out.println("DEBUG System error: " + e + "<br/><br/>");
+				} else {
+					out.println("System error.");
+				}
+			} finally {
+				stmt1.close();
+				rs1.close();
+				c1.close();
+			}
+		%>
+		
+			
+            <a href="#" class="list-group-item active">Link</a>
+          </div>
+        </div><!--/span-->

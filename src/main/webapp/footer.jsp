@@ -1,9 +1,4 @@
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</center>
+</div>
+</div>
 </body>
 </html>

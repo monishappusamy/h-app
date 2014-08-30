@@ -32,6 +32,7 @@
 <jsp:include page="/header.jsp"/>
 
 <h3>Our Best Deals!</h3>
+<link href="./bootstrap/home-table.css" rel="stylesheet">	
 <%
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -42,8 +43,8 @@
 		int count = rs.getInt(1);
 		rs.close();
 		stmt.close();
-		out.println("<center><table border=\"1\" class=\"border\" width=\"80%\">");
-		out.println("<tr><th>Product</th><th>Type</th><th>Price</th></tr>");
+		out.println("<table border=\"0\" class=\"table table-striped\">");
+		out.println("<thead><tr><th>Product</th><th>Type</th><th>Price</th></tr></thead><tbody>");
 		
 		NumberFormat nf = NumberFormat.getCurrencyInstance();
 		for (int i=0; i < 10; i++) {
@@ -61,7 +62,7 @@
 			stmt.close();
 			rs.close();
 		}
-		out.println("</table></center><br/>");
+		out.println("</tbody></table><br/>");
 	} catch (SQLException e) {
 		if ("true".equals(request.getParameter("debug"))) {
 			out.println("DEBUG System error: " + e + "<br/><br/>");

@@ -1,0 +1,12 @@
+body {
+  padding-top: 80px;
+  background-color: #eee;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+   color: #ccc;
+}

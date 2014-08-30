@@ -1,4 +1,6 @@
 <%@ page import="java.sql.*" %>
+<jsp:include page="/header.jsp"/>
+
 <%!
 	private Connection conn = null;
 
@@ -98,7 +100,7 @@ if (request.getMethod().equals("POST") && username != null) {
 	}
 }
 %>
-<jsp:include page="/header.jsp"/>
+
 <%
 if ("true".equals(request.getParameter("debug"))) {
 	out.println("DEBUG: " + debug + "<br/><br/>");
@@ -115,28 +117,21 @@ if (request.getMethod().equals("POST") && username != null) {
 	}
 }
 %>
-<h3>Login</h3>
-Please enter your credentials: <br/><br/>
-<form method="POST">
-	<center>
-	<table>
-	<tr>
-		<td>Username:</td>
-		<td><input id="username" name="username"></input></td>
-	</tr>
-	<tr>
-		<td>Password:</td>
-		<td><input id="password" name="password" type="password"></input></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input id="submit" type="submit" value="Login"></input></td>
-	</tr>
-	</table>
-	</center>
-</form>
-If you dont have an account with us then please <a href="register.jsp">Register</a> now for a free account.
-<br/><br/>
 
+<link href="./bootstrap/signin.css" rel="stylesheet">	
+	<div class="container">
+
+		  <form class="form-signin" method="POST">
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<input name="username" type="email" class="form-control" placeholder="Email address" required autofocus>
+				<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+				<label class="checkbox">
+				  <input type="checkbox" value="remember-me"> Remember me
+				</label>
+				<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				<br/><br/>
+				If you dont have an account with us then please <a href="register.jsp">Register</a> now for a free account.
+		  </form>
+		</div> <!-- /container -->
 <jsp:include page="/footer.jsp"/>
 
