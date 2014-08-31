@@ -84,15 +84,15 @@ Change your password: <br/><br/>
 	</tr>
 	<tr>
 		<td>New Password:</td>
-		<td><input id="password1" name="password1" type="password"></input></td>
+		<td><input class="form-control" placeholder="Password" id="password1" name="password1" type="password"></input></td>
 	</tr>
 	<tr>
 		<td>Repeat Password:</td>
-		<td><input id="password2" name="password2" type="password"></input></td>
+		<td><input class="form-control" placeholder="Password" id="password2" name="password2" type="password"></input></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td><input id="submit" type="submit" value="Submit"></input></td>
+		<td><button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Submit</button></td>
 	</tr>
 	</table>
 	</center>

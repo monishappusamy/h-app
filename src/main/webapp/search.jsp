@@ -30,7 +30,7 @@
         
 %>
 <jsp:include page="/header.jsp"/>
-<h3>Search</h3>
+<center><h4>search</h4></center>
 <font size="-1">
 <%
 String query = (String) request.getParameter("q");
@@ -94,11 +94,11 @@ if (request.getMethod().equals("GET") && query != null){
 } else {
 %>
 <FORM name='query' method='GET'>
-<table>
-<tr><td>Search for</td><td><input type='text' name='q'></td></td>
-<tr><td></td><td><input type='submit' value='Search'/></td></td>
+<center><table>
+<tr><td></td><td><input type="text" class="form-control" name='q'></td></td>
+<tr><td></td><td><input class="btn btn-primary" type='submit' value='Search'/></td></td>
 <tr><td></td><td><a href='advanced.jsp' style='font-size:9pt;'>Advanced Search</a></td></td>
-</table>
+</table></center>
 </form>
 <%  
 }

@@ -142,9 +142,9 @@
 						"currentbasketid INTEGER NULL, CONSTRAINT UNIQUE_Users_name UNIQUE (name) )").execute();
 				
 				// Load the user data
-				c.prepareStatement("INSERT INTO Users (name, type, password) VALUES ('user1@thebodgeitstore.com', 'USER', '" + getRndPassword() + "')").execute();
-				c.prepareStatement("INSERT INTO Users (name, type, password) VALUES ('admin@thebodgeitstore.com', 'ADMIN', '" + getRndPassword() + "')").execute();
-				c.prepareStatement("INSERT INTO Users (name, type, password, currentbasketid) VALUES ('test@thebodgeitstore.com', 'USER', 'password', 1)").execute(); // Ok, so this one is easy:)
+				c.prepareStatement("INSERT INTO Users (name, type, password) VALUES ('user1@wiprostore.com', 'USER', '" + getRndPassword() + "')").execute();
+				c.prepareStatement("INSERT INTO Users (name, type, password) VALUES ('admin@wiprostore.com', 'ADMIN', '" + getRndPassword() + "')").execute();
+				c.prepareStatement("INSERT INTO Users (name, type, password, currentbasketid) VALUES ('test@wiprostore.com', 'USER', 'password', 1)").execute(); // Ok, so this one is easy:)
 
 				// Baskets table
 				c.prepareStatement("CREATE CACHED TABLE Baskets (" +
@@ -185,9 +185,9 @@
 						"status INTEGER NOT NULL, " +
 						"CONSTRAINT UNIQUE_Score_label UNIQUE (task) )").execute();
 
-				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_TEST', 'Login as test@thebodgeitstore.com', 0)").execute();
-				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_USER1', 'Login as user1@thebodgeitstore.com', 0)").execute();
-				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_ADMIN', 'Login as admin@thebodgeitstore.com', 0)").execute();
+				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_TEST', 'Login as test@wiprostore.com', 0)").execute();
+				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_USER1', 'Login as user1@wiprostore.com', 0)").execute();
+				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('LOGIN_ADMIN', 'Login as admin@wiprostore.com', 0)").execute();
 				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('HIDDEN_ADMIN', 'Find hidden content as a non admin user', 0)").execute();
 				c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('HIDDEN_DEBUG', 'Find diagnostic data', 0)").execute();
                                 c.prepareStatement("INSERT INTO Score (task, description, status) VALUES ('SIMPLE_XSS', 'Level 1: Display a popup using: &lt;script&gt;alert(\"XSS\")&lt;/script&gt;.', 0)").execute();

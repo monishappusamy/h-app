@@ -92,7 +92,7 @@
     
 </SCRIPT>
     
-<h3>Search</h3>
+<center><h3>Search</h3></center>
 <font size="-1">
 <%
 
@@ -175,13 +175,13 @@ if (request.getMethod().equals("POST") && query != null){
 } else {
 %>
 <form id="advanced" name="advanced" method="POST" onsubmit="return validateForm(this);false;">
-<table>
-<tr><td>Product:</td><td><input id='product' type='text' name='product' /></td></td>
-<tr><td>Description:</td><td><input id='desc' type='text' name='description' /></td></td>
-<tr><td>Type:</td><td><input id='type' type='text' name='type' /></td></td>
-<tr><td>Price:</td><td><input id='price' type='text' name='price' /></td></td>
-<tr><td></td><td><input type='submit' value='Search'/></td></td>
-</table>
+<center><table>
+<tr><td>Product:</td><td><input class="form-control" id='product' type="text" name='product' /></td></td>
+<tr><td>Description:</td><td><input class="form-control" id='desc' type='text' name='description' /></td></td>
+<tr><td>Type:</td><td><input class="form-control" id='type' type='text' name='type' /></td></td>
+<tr><td>Price:</td><td><input class="form-control" id='price' type='text' name='price' /></td></td>
+<tr><td></td><td><input class="btn btn-primary" type='submit' value='Search'/></td></td>
+</table></center>
 </form>
 <form id="query" name="advanced" method="POST">
     <input id='q' type="hidden" name="q" value="" />

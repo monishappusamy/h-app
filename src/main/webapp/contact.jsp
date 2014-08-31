@@ -28,7 +28,7 @@
 	}
 %>
 <jsp:include page="/header.jsp"/>
-
+<link href="./bootstrap/home-table.css" rel="stylesheet">
 <%
 String username = (String) session.getAttribute("username");
 String usertype = (String) session.getAttribute("usertype");
@@ -58,8 +58,8 @@ if (request.getMethod().equals("POST") && comments != null) {
 				username = "Guest user";
 			}
 
-			out.println("<br/><p style=\"color:green\">Thank you for your feedback:</p><br/>");
-			out.println("<br/><center><table border=\"1\" width=\"80%\" class=\"border\">");
+			out.println("<br/><center><h3 style=\"color:green\">Thank you for your feedback:</h3><br/>");
+			out.println("<br/><table border=\"0\" width=\"60%\" class=\"table table-bordered\">");
 			out.println("<tr><td>" + comments + "</td></tr>");
 			out.println("</table></center><br/>");
 
@@ -73,7 +73,7 @@ if (request.getMethod().equals("POST") && comments != null) {
 			stmt.close();
 		}
 	} else {
-		out.println("<br/><p style=\"color:red\">There was a problem with your feedback, please try again.</p><br/>");
+		out.println("<br/><h3 style=\"color:red\">There was a problem with your feedback, please try again.</h3><br/>");
 	}
 }
 // Generate and store a new token
@@ -109,18 +109,19 @@ if (usertype != null && usertype.endsWith("ADMIN")) {
 } else {
 	// Display the message form
 %>
-<h3>Contact Us</h3>
-Please send us your feedback: <br/><br/>
+
 <form method="POST">
 	<input type="hidden" id="user" name="<%=username%>" value=""/>
 	<input type="hidden" id="anticsrf" name="anticsrf" value="<%=anticsrf%>"></input>
 	<center>
 	<table>
 	<tr>
-		<td><textarea id="comments" name="comments" cols=80 rows=8></textarea></td>
+		<h3>Contact Us</h3>
+		<h4>Please send us your feedback</h4><br/><br/>
+		<td><textarea class="form-control" id="comments" name="comments" cols=80 rows=8></textarea></td>
 	</tr>
 	<tr>
-		<td><input id="submit" type="submit" value="Submit"></input></td>
+		<td><input class="btn btn-primary" id="submit" type="submit" value="Submit"></input></td>
 	</tr>
 	</table>
 	</center>

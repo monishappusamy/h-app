@@ -57,6 +57,7 @@ function decQuantity (prodid) {
 </script>
 
 <jsp:include page="/header.jsp"/>
+<link href="./bootstrap/home-table.css" rel="stylesheet">
 
 <h3>Your Basket</h3>
 <%
@@ -250,7 +251,7 @@ function decQuantity (prodid) {
 				}
 			}
 		}
-		out.println("<p style=\"color:green\">Your basket had been updated.</p><br/>");
+		out.println("<h4 style=\"color:green\">Your basket had been updated.</h4><br/>");
 	}
 	
 	// Display basket
@@ -259,7 +260,7 @@ function decQuantity (prodid) {
 				" AND BasketContents.productid = Products.productid");
 		rs = stmt.executeQuery();
 		out.println("<form action=\"basket.jsp\" method=\"post\">");
-		out.println("<table border=\"1\" class=\"border\" width=\"80%\">");
+		out.println("<table border=\"1\" class=\"table table-bordered\" width=\"80%\">");
 		out.println("<tr><th>Product</th><th>Quantity</th><th>Price</th><th>Total</th></tr>");
 		BigDecimal basketTotal = new BigDecimal(0);
 		NumberFormat nf = NumberFormat.getCurrencyInstance();
@@ -281,7 +282,7 @@ function decQuantity (prodid) {
 			out.println("</td><td align=\"right\">" + nf.format(total) + "</td>");
 			out.println("</tr>");
 		}
-		out.println("<tr><td>Total</td><td style=\"text-align: center\">" + "<input id=\"update\" name=\"update\" type=\"submit\" value=\"Update Basket\"/>" + "</td><td>&nbsp;</td>" +
+		out.println("<tr><td>Total</td><td style=\"text-align: center\">" + "<input class=\"btn btn-primary\" id=\"update\" name=\"update\" type=\"submit\" value=\"Update Basket\"/>" + "</td><td>&nbsp;</td>" +
 				"<td align=\"right\">" + nf.format(basketTotal) + "</td></tr>");
 		out.println("</table>");
 		out.println();

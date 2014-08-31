@@ -6,7 +6,7 @@ session.setAttribute("userid", null);
 %>
 <jsp:include page="/header.jsp"/>
 
-<br/><p style="color:green">Thank you for your custom.</p><br/>
+<br/><h3 style="color:green">Thank you for your custom.</h3><br/>
 
 <jsp:include page="/footer.jsp"/>
 
