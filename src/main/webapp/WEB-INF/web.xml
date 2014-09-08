@@ -16,10 +16,20 @@
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/servlet/InitServlet</url-pattern>
     </servlet-mapping>
-
+	
+	
+	<servlet>   
+               <servlet-name>1</servlet-name>
+               <jsp-file>/level/1.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+					<servlet-name>1</servlet-name>
+					<url-pattern>/level/1</url-pattern>
+	</servlet-mapping> 
+	
    <welcome-file-list>
-      <welcome-file>home.jsp</welcome-file>
-      <welcome-file>home.html</welcome-file>
+      <welcome-file>about.jsp</welcome-file>
+      <welcome-file>about.html</welcome-file>
     </welcome-file-list>
 
     <!-- error-page>

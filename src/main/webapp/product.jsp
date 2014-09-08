@@ -53,7 +53,7 @@ function decQuantity () {
 }
 </script>
 <jsp:include page="/header.jsp"/>
-
+<link href="./bootstrap/home-table.css" rel="stylesheet">
 <%
 	String productId = request.getParameter("prodid");
 	String typeId = request.getParameter("typeid");
@@ -65,15 +65,15 @@ function decQuantity () {
 			stmt = conn.prepareStatement("SELECT * FROM Products, ProductTypes where typeid=" + Integer.parseInt(typeId) +
 					" AND Products.typeid = ProductTypes.typeid");
 			rs = stmt.executeQuery();
-			out.println("<h3>Products</h3><center><table border=\"1\" width=\"80%\" class=\"border\">");
-			out.println("<tr><th>Product</th><th>Type</th><th>Price</th></tr>");
+			out.println("<h3>Products</h3><center><table border=\"0\" width=\"60%\" class=\"table table-striped\">");
+			out.println("<thead><tr><th>Product</th><th>Type</th><th>Price</th></tr></thead>");
 			while (rs.next()) {
 				out.println("<tr>");
 				String product = rs.getString("product");
 				BigDecimal price = rs.getBigDecimal("price");
 				out.println("<td><a href=\"product.jsp?prodid=" + rs.getInt("productid") + "\">" + 
 						product + "</a><td>" + rs.getString("type")+ 
-						"</td></td><td align=\"right\">" + nf.format(price) + "</td>");
+						"</td></td><td>" + nf.format(price) + "</td>");
 				out.println("</tr>");
 			}
 			out.println("</table></center><br/>");
@@ -83,7 +83,7 @@ function decQuantity () {
 					" AND Products.typeid = ProductTypes.typeid");
 			rs = stmt.executeQuery();
 			out.println("<h3>Product</h3><form action=\"basket.jsp\" method=\"post\">");
-			out.println("<center><table class=\"border\" width=\"80%\">");
+			out.println("<center><table class=\"table table-bordered\" width=\"60%\">");
 			out.println("<tr><th>Product</th><th>Type</th><th>Price</th><th>Quantity</th><th>Buy</th></tr>");
 			if (rs.next()) {
 				int id = rs.getInt("productid");
